@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify'
-import * as controllers from '../controllers/user.controller'
+import * as controllers from '../controllers/creature.controller'
 
 async function cratureRouter(fastify: FastifyInstance) {
 
