@@ -1,0 +1,50 @@
+version: '3.9'
+
+services:
+  postgresql:
+    image: postgres:16.1-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - database_data:/var/lib/postgresql/data
+
+  userapi:
+    build:
+        context: .
+        dockerfile: ./user-api/Dockerfile
+    ports:
+      - 5000:5000
+    links:
+      - postgresql
+    environment:
+      - PGHOST=postgresql
+      - PGDATABASE=postgres
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+    depends_on:
+      - postgresql
+
+  creatureapi:
+    build:
+      context: .
+      dockerfile: ./creature-api/Dockerfile
+    ports:
+      - 5001:5000
+    links:
+      - postgresql
+    environment:
+      - PGHOST=postgresql
+      - PGDATABASE=postgres
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+    depends_on:
+      - postgresql
+
+volumes:
+  database_data:
+    driver: local

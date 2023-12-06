@@ -1,0 +1,14 @@
+{
+    "db": {
+        "connectionString": "postgres://postgres:postgres@localhost:5432/postgres"
+    },
+    "outDir": "./src",
+    "schemas": {
+        "public": {
+            "include": [
+                "users"
+            ],
+            "exclude": []
+        }
+    }
+}
