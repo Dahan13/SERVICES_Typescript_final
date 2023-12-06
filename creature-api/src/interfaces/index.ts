@@ -4,9 +4,9 @@ export interface ICreature {
     price: number;
     health: number;
     attack: number;
-    defence: number;
-    speed: number;
+    defense: number
     magic: number;
+    speed: number;
 }
 
 export interface IUserCreature {

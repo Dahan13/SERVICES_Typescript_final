@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify"
-import { ICreature } from "../interfaces"
+import {ICreature, IUserCreature} from "../interfaces"
 import type * as s from 'zapatos/schema'
 import * as db from 'zapatos/db'
 import pool from '../db/pgPool'
@@ -27,27 +27,31 @@ export const getCreature =
         })
 }
 
-export const createUser =
+export const createCreature =
     async (request: FastifyRequest, reply: FastifyReply) => {
-    const user: ICreature = request.body as ICreature;
-    // const users = await db.sql<s.users.SQL, s.users.Selectable[]>`SELECT * FROM ${"users"}`.run(pool)
+        const creature: ICreature = request.body as ICreature;
+        await db.sql<s.creatures.SQL, s.creatures.Selectable[]>`INSERT INTO ${"creatures"} VALUES (${db.param(creature.name)}, ${db.param(creature.price)}, ${db.param(creature.health)}, ${db.param(creature.attack)}, ${db.param(creature.defense)}, ${db.param(creature.magic)}, ${db.param(creature.speed)})`.run(pool)
+        reply.send({data: "201 - Successfull !"});
+    }
 
-    await db.sql<s.users.SQL, s.users.Selectable[]> `INSERT INTO ${"users"} VALUES (${db.param(user.username)}, ${db.param(user.password)})`.run(pool)
-    return reply.send({data: "Done !"})
-}
 
-export const updateUser =
+export const addCreatureToUser =
     async (request: FastifyRequest, reply: FastifyReply) => {
-        const id = String(request.params['id'])
-        const users = await db.sql<s.users.SQL, s.users.Selectable[]>`SELECT * FROM ${"users"}`.run(pool)
-        for (let i = 0; i < users.length; i++) {
-            if (users[i].username === id) {
-                const newInfos = request.body
-                for (let j = 0; j < Object.keys(newInfos).length; j++) {
-                    users[i][Object.keys(newInfos)[j]] = newInfos[Object.keys(newInfos)[j]]
+        const userCreature: IUserCreature = request.body as IUserCreature;
+        await db.sql<s.user_creatures.SQL, s.user_creatures.Selectable[]>`INSERT INTO ${"user_creatures"} VALUES (${db.param(userCreature.username)},${db.param(userCreature.creature_id)})`.run(pool)
+        reply.send({data:"201 - Successful !"});
+    }
+
+export const getTeam =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        const userId = Number(request.params['userid'])
+        return await db.sql<s.user_creatures.SQL, s.user_creatures.Selectable[]>`SELECT * FROM ${"user_creatures"} WHERE ${"username"} = ${db.param(userId)}`
+            .run(pool)
+            .then((team) => {
+                if (team) {
+                    return reply.send({data: team})
+                } else {
+                    return reply.send({data: "User not found"})
                 }
-                let user = await db.sql<s.users.SQL, s.users.Insertable> `UPDATE ${"users"} SET ${"username"} = ${db.param(users[i].username)}, ${"score"} = ${db.param(users[i].score)} WHERE ${"username"} = ${db.param(users[i].username)}`.run(pool)
-                reply.send({data: "Done !"})
-            }
-        }
-}
+            })
+    }

@@ -1,6 +1,6 @@
 import fastify from 'fastify'
 import 'dotenv/config'
-import cratureRouter from './routes/crature.router'
+import creatureRouter from './routes/creature.router'
 import { initDB } from './db/initDB'
 
 const port = 5000;
@@ -16,7 +16,7 @@ const startServer = async () => {
             server.log.error(error, address);
         }
 
-        server.register(cratureRouter, { prefix: '/api/creature' })
+        server.register(creatureRouter, { prefix: '/api/creature' })
 
         await server.listen({ host, port }, errorHandler)
     } catch (e) {

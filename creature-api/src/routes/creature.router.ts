@@ -1,7 +1,7 @@
 import { FastifyInstance } from 'fastify'
 import * as controllers from '../controllers/creature.controller'
 
-async function cratureRouter(fastify: FastifyInstance) {
+async function creatureRouter(fastify: FastifyInstance) {
 
     // TODO : Update handlers
 
@@ -14,7 +14,7 @@ async function cratureRouter(fastify: FastifyInstance) {
     fastify.route({
         method: 'POST',
         url: '/',
-        handler: controllers.createUser,
+        handler: controllers.createCreature,
     })
 
     fastify.route({
@@ -24,11 +24,18 @@ async function cratureRouter(fastify: FastifyInstance) {
     })
 
     fastify.route({
-        method: 'PUT',
-        url: '/:id',
+        method: 'POST',
+        url: '/userCreature',
 
-        handler: controllers.updateUser,
+        handler: controllers.addCreatureToUser,
+    })
+
+    fastify.route({
+        method: 'POST',
+        url: '/userCreature/team/:userid',
+
+        handler: controllers.getTeam,
     })
 }
 
-export default cratureRouter
+export default creatureRoute
