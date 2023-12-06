@@ -9,8 +9,9 @@ export const initDB = async () => {
             health INTEGER DEFAULT 1,
             attack INTEGER DEFAULT 1,
             defence INTEGER DEFAULT 1,
-            speed INTEGER DEFAULT 1,
-            magic INTEGER DEFAULT 1
+            magic INTEGER DEFAULT 1,
+            speed INTEGER DEFAULT 1
+            
         );
 
     CREATE TABLE IF NOT EXISTS user_creatures (
