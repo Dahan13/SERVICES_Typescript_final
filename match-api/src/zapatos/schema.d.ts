@@ -23,262 +23,262 @@ declare module 'zapatos/schema' {
   /* --- tables --- */
 
   /**
-   * **creatures**
+   * **matches**
    * - Table in database
    */
-  export namespace creatures {
-    export type Table = 'creatures';
+  export namespace matches {
+    export type Table = 'matches';
     export interface Selectable {
       /**
-      * **creatures.id**
+      * **matches.id**
       * - `int4` in database
-      * - `NOT NULL`, default: `nextval('creatures_id_seq'::regclass)`
+      * - `NOT NULL`, default: `nextval('matches_id_seq'::regclass)`
       */
       id: number;
       /**
-      * **creatures.name**
+      * **matches.host**
       * - `varchar` in database
       * - Nullable, no default
       */
-      name: string | null;
+      host: string | null;
       /**
-      * **creatures.price**
+      * **matches.challenger**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      challenger: string | null;
+      /**
+      * **matches.status**
       * - `int4` in database
       * - Nullable, default: `0`
       */
-      price: number | null;
+      status: number | null;
       /**
-      * **creatures.health**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.winner**
+      * - `varchar` in database
+      * - Nullable, no default
       */
-      health: number | null;
+      winner: string | null;
       /**
-      * **creatures.attack**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.creation_date**
+      * - `timestamp` in database
+      * - Nullable, default: `now()`
       */
-      attack: number | null;
+      creation_date: Date | null;
       /**
-      * **creatures.defence**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.beginning_date**
+      * - `timestamp` in database
+      * - Nullable, no default
       */
-      defence: number | null;
+      beginning_date: Date | null;
       /**
-      * **creatures.speed**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.ending_date**
+      * - `timestamp` in database
+      * - Nullable, no default
       */
-      speed: number | null;
-      /**
-      * **creatures.magic**
-      * - `int4` in database
-      * - Nullable, default: `1`
-      */
-      magic: number | null;
+      ending_date: Date | null;
     }
     export interface JSONSelectable {
       /**
-      * **creatures.id**
+      * **matches.id**
       * - `int4` in database
-      * - `NOT NULL`, default: `nextval('creatures_id_seq'::regclass)`
+      * - `NOT NULL`, default: `nextval('matches_id_seq'::regclass)`
       */
       id: number;
       /**
-      * **creatures.name**
+      * **matches.host**
       * - `varchar` in database
       * - Nullable, no default
       */
-      name: string | null;
+      host: string | null;
       /**
-      * **creatures.price**
+      * **matches.challenger**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      challenger: string | null;
+      /**
+      * **matches.status**
       * - `int4` in database
       * - Nullable, default: `0`
       */
-      price: number | null;
+      status: number | null;
       /**
-      * **creatures.health**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.winner**
+      * - `varchar` in database
+      * - Nullable, no default
       */
-      health: number | null;
+      winner: string | null;
       /**
-      * **creatures.attack**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.creation_date**
+      * - `timestamp` in database
+      * - Nullable, default: `now()`
       */
-      attack: number | null;
+      creation_date: db.TimestampString | null;
       /**
-      * **creatures.defence**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.beginning_date**
+      * - `timestamp` in database
+      * - Nullable, no default
       */
-      defence: number | null;
+      beginning_date: db.TimestampString | null;
       /**
-      * **creatures.speed**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.ending_date**
+      * - `timestamp` in database
+      * - Nullable, no default
       */
-      speed: number | null;
-      /**
-      * **creatures.magic**
-      * - `int4` in database
-      * - Nullable, default: `1`
-      */
-      magic: number | null;
+      ending_date: db.TimestampString | null;
     }
     export interface Whereable {
       /**
-      * **creatures.id**
+      * **matches.id**
       * - `int4` in database
-      * - `NOT NULL`, default: `nextval('creatures_id_seq'::regclass)`
+      * - `NOT NULL`, default: `nextval('matches_id_seq'::regclass)`
       */
       id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
-      * **creatures.name**
+      * **matches.host**
       * - `varchar` in database
       * - Nullable, no default
       */
-      name?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      host?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
       /**
-      * **creatures.price**
+      * **matches.challenger**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      challenger?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **matches.status**
       * - `int4` in database
       * - Nullable, default: `0`
       */
-      price?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      status?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
-      * **creatures.health**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.winner**
+      * - `varchar` in database
+      * - Nullable, no default
       */
-      health?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      winner?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
       /**
-      * **creatures.attack**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.creation_date**
+      * - `timestamp` in database
+      * - Nullable, default: `now()`
       */
-      attack?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      creation_date?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn>;
       /**
-      * **creatures.defence**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.beginning_date**
+      * - `timestamp` in database
+      * - Nullable, no default
       */
-      defence?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      beginning_date?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn>;
       /**
-      * **creatures.speed**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.ending_date**
+      * - `timestamp` in database
+      * - Nullable, no default
       */
-      speed?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
-      /**
-      * **creatures.magic**
-      * - `int4` in database
-      * - Nullable, default: `1`
-      */
-      magic?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      ending_date?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | db.SQLFragment | db.ParentColumn>;
     }
     export interface Insertable {
       /**
-      * **creatures.id**
+      * **matches.id**
       * - `int4` in database
-      * - `NOT NULL`, default: `nextval('creatures_id_seq'::regclass)`
+      * - `NOT NULL`, default: `nextval('matches_id_seq'::regclass)`
       */
       id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
       /**
-      * **creatures.name**
+      * **matches.host**
       * - `varchar` in database
       * - Nullable, no default
       */
-      name?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      host?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
       /**
-      * **creatures.price**
+      * **matches.challenger**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      challenger?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **matches.status**
       * - `int4` in database
       * - Nullable, default: `0`
       */
-      price?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      status?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
       /**
-      * **creatures.health**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.winner**
+      * - `varchar` in database
+      * - Nullable, no default
       */
-      health?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      winner?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
       /**
-      * **creatures.attack**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.creation_date**
+      * - `timestamp` in database
+      * - Nullable, default: `now()`
       */
-      attack?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      creation_date?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment;
       /**
-      * **creatures.defence**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.beginning_date**
+      * - `timestamp` in database
+      * - Nullable, no default
       */
-      defence?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      beginning_date?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment;
       /**
-      * **creatures.speed**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.ending_date**
+      * - `timestamp` in database
+      * - Nullable, no default
       */
-      speed?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
-      /**
-      * **creatures.magic**
-      * - `int4` in database
-      * - Nullable, default: `1`
-      */
-      magic?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      ending_date?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment;
     }
     export interface Updatable {
       /**
-      * **creatures.id**
+      * **matches.id**
       * - `int4` in database
-      * - `NOT NULL`, default: `nextval('creatures_id_seq'::regclass)`
+      * - `NOT NULL`, default: `nextval('matches_id_seq'::regclass)`
       */
       id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
       /**
-      * **creatures.name**
+      * **matches.host**
       * - `varchar` in database
       * - Nullable, no default
       */
-      name?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      host?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
       /**
-      * **creatures.price**
+      * **matches.challenger**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      challenger?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **matches.status**
       * - `int4` in database
       * - Nullable, default: `0`
       */
-      price?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      status?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
       /**
-      * **creatures.health**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.winner**
+      * - `varchar` in database
+      * - Nullable, no default
       */
-      health?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      winner?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
       /**
-      * **creatures.attack**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.creation_date**
+      * - `timestamp` in database
+      * - Nullable, default: `now()`
       */
-      attack?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      creation_date?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment>;
       /**
-      * **creatures.defence**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.beginning_date**
+      * - `timestamp` in database
+      * - Nullable, no default
       */
-      defence?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      beginning_date?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment>;
       /**
-      * **creatures.speed**
-      * - `int4` in database
-      * - Nullable, default: `1`
+      * **matches.ending_date**
+      * - `timestamp` in database
+      * - Nullable, no default
       */
-      speed?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
-      /**
-      * **creatures.magic**
-      * - `int4` in database
-      * - Nullable, default: `1`
-      */
-      magic?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      ending_date?: (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, (db.TimestampString | Date) | db.Parameter<(db.TimestampString | Date)> | null | db.DefaultType | db.SQLFragment>;
     }
-    export type UniqueIndex = 'creatures_pkey';
+    export type UniqueIndex = 'matches_pkey';
     export type Column = keyof Selectable;
     export type OnlyCols<T extends readonly Column[]> = Pick<Selectable, T[number]>;
     export type SQLExpression = Table | db.ColumnNames<Updatable | (keyof Updatable)[]> | db.ColumnValues<Updatable> | Whereable | Column | db.ParentColumn | db.GenericSQLExpression;
@@ -286,112 +286,202 @@ declare module 'zapatos/schema' {
   }
 
   /**
-   * **user_creatures**
+   * **rounds**
    * - Table in database
    */
-  export namespace user_creatures {
-    export type Table = 'user_creatures';
+  export namespace rounds {
+    export type Table = 'rounds';
     export interface Selectable {
       /**
-      * **user_creatures.id**
+      * **rounds.id**
       * - `int4` in database
-      * - `NOT NULL`, default: `nextval('user_creatures_id_seq'::regclass)`
+      * - `NOT NULL`, default: `nextval('rounds_id_seq'::regclass)`
       */
       id: number;
       /**
-      * **user_creatures.username**
-      * - `varchar` in database
-      * - Nullable, no default
-      */
-      username: string | null;
-      /**
-      * **user_creatures.creature_id**
+      * **rounds.match_id**
       * - `int4` in database
       * - Nullable, no default
       */
-      creature_id: number | null;
+      match_id: number | null;
+      /**
+      * **rounds.host_creature**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      host_creature: number | null;
+      /**
+      * **rounds.challenger_creature**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      challenger_creature: number | null;
+      /**
+      * **rounds.status**
+      * - `int4` in database
+      * - Nullable, default: `0`
+      */
+      status: number | null;
+      /**
+      * **rounds.winner**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      winner: string | null;
     }
     export interface JSONSelectable {
       /**
-      * **user_creatures.id**
+      * **rounds.id**
       * - `int4` in database
-      * - `NOT NULL`, default: `nextval('user_creatures_id_seq'::regclass)`
+      * - `NOT NULL`, default: `nextval('rounds_id_seq'::regclass)`
       */
       id: number;
       /**
-      * **user_creatures.username**
-      * - `varchar` in database
-      * - Nullable, no default
-      */
-      username: string | null;
-      /**
-      * **user_creatures.creature_id**
+      * **rounds.match_id**
       * - `int4` in database
       * - Nullable, no default
       */
-      creature_id: number | null;
+      match_id: number | null;
+      /**
+      * **rounds.host_creature**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      host_creature: number | null;
+      /**
+      * **rounds.challenger_creature**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      challenger_creature: number | null;
+      /**
+      * **rounds.status**
+      * - `int4` in database
+      * - Nullable, default: `0`
+      */
+      status: number | null;
+      /**
+      * **rounds.winner**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      winner: string | null;
     }
     export interface Whereable {
       /**
-      * **user_creatures.id**
+      * **rounds.id**
       * - `int4` in database
-      * - `NOT NULL`, default: `nextval('user_creatures_id_seq'::regclass)`
+      * - `NOT NULL`, default: `nextval('rounds_id_seq'::regclass)`
       */
       id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
       /**
-      * **user_creatures.username**
-      * - `varchar` in database
-      * - Nullable, no default
-      */
-      username?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
-      /**
-      * **user_creatures.creature_id**
+      * **rounds.match_id**
       * - `int4` in database
       * - Nullable, no default
       */
-      creature_id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      match_id?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **rounds.host_creature**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      host_creature?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **rounds.challenger_creature**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      challenger_creature?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **rounds.status**
+      * - `int4` in database
+      * - Nullable, default: `0`
+      */
+      status?: number | db.Parameter<number> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, number | db.Parameter<number> | db.SQLFragment | db.ParentColumn>;
+      /**
+      * **rounds.winner**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      winner?: string | db.Parameter<string> | db.SQLFragment | db.ParentColumn | db.SQLFragment<any, string | db.Parameter<string> | db.SQLFragment | db.ParentColumn>;
     }
     export interface Insertable {
       /**
-      * **user_creatures.id**
+      * **rounds.id**
       * - `int4` in database
-      * - `NOT NULL`, default: `nextval('user_creatures_id_seq'::regclass)`
+      * - `NOT NULL`, default: `nextval('rounds_id_seq'::regclass)`
       */
       id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment;
       /**
-      * **user_creatures.username**
-      * - `varchar` in database
-      * - Nullable, no default
-      */
-      username?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
-      /**
-      * **user_creatures.creature_id**
+      * **rounds.match_id**
       * - `int4` in database
       * - Nullable, no default
       */
-      creature_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      match_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **rounds.host_creature**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      host_creature?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **rounds.challenger_creature**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      challenger_creature?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **rounds.status**
+      * - `int4` in database
+      * - Nullable, default: `0`
+      */
+      status?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment;
+      /**
+      * **rounds.winner**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      winner?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment;
     }
     export interface Updatable {
       /**
-      * **user_creatures.id**
+      * **rounds.id**
       * - `int4` in database
-      * - `NOT NULL`, default: `nextval('user_creatures_id_seq'::regclass)`
+      * - `NOT NULL`, default: `nextval('rounds_id_seq'::regclass)`
       */
       id?: number | db.Parameter<number> | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | db.DefaultType | db.SQLFragment>;
       /**
-      * **user_creatures.username**
-      * - `varchar` in database
-      * - Nullable, no default
-      */
-      username?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
-      /**
-      * **user_creatures.creature_id**
+      * **rounds.match_id**
       * - `int4` in database
       * - Nullable, no default
       */
-      creature_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      match_id?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **rounds.host_creature**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      host_creature?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **rounds.challenger_creature**
+      * - `int4` in database
+      * - Nullable, no default
+      */
+      challenger_creature?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **rounds.status**
+      * - `int4` in database
+      * - Nullable, default: `0`
+      */
+      status?: number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, number | db.Parameter<number> | null | db.DefaultType | db.SQLFragment>;
+      /**
+      * **rounds.winner**
+      * - `varchar` in database
+      * - Nullable, no default
+      */
+      winner?: string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment | db.SQLFragment<any, string | db.Parameter<string> | null | db.DefaultType | db.SQLFragment>;
     }
-    export type UniqueIndex = 'user_creatures_pkey';
+    export type UniqueIndex = 'rounds_pkey';
     export type Column = keyof Selectable;
     export type OnlyCols<T extends readonly Column[]> = Pick<Selectable, T[number]>;
     export type SQLExpression = Table | db.ColumnNames<Updatable | (keyof Updatable)[]> | db.ColumnValues<Updatable> | Whereable | Column | db.ParentColumn | db.GenericSQLExpression;
@@ -401,20 +491,20 @@ declare module 'zapatos/schema' {
   /* --- aggregate types --- */
 
   export namespace public {  
-    export type Table = creatures.Table | user_creatures.Table;
-    export type Selectable = creatures.Selectable | user_creatures.Selectable;
-    export type JSONSelectable = creatures.JSONSelectable | user_creatures.JSONSelectable;
-    export type Whereable = creatures.Whereable | user_creatures.Whereable;
-    export type Insertable = creatures.Insertable | user_creatures.Insertable;
-    export type Updatable = creatures.Updatable | user_creatures.Updatable;
-    export type UniqueIndex = creatures.UniqueIndex | user_creatures.UniqueIndex;
-    export type Column = creatures.Column | user_creatures.Column;
+    export type Table = matches.Table | rounds.Table;
+    export type Selectable = matches.Selectable | rounds.Selectable;
+    export type JSONSelectable = matches.JSONSelectable | rounds.JSONSelectable;
+    export type Whereable = matches.Whereable | rounds.Whereable;
+    export type Insertable = matches.Insertable | rounds.Insertable;
+    export type Updatable = matches.Updatable | rounds.Updatable;
+    export type UniqueIndex = matches.UniqueIndex | rounds.UniqueIndex;
+    export type Column = matches.Column | rounds.Column;
   
-    export type AllBaseTables = [creatures.Table, user_creatures.Table];
+    export type AllBaseTables = [matches.Table, rounds.Table];
     export type AllForeignTables = [];
     export type AllViews = [];
     export type AllMaterializedViews = [];
-    export type AllTablesAndViews = [creatures.Table, user_creatures.Table];
+    export type AllTablesAndViews = [matches.Table, rounds.Table];
   }
 
 
@@ -442,43 +532,43 @@ declare module 'zapatos/schema' {
   /* === lookups === */
 
   export type SelectableForTable<T extends Table> = {
-    "creatures": creatures.Selectable;
-    "user_creatures": user_creatures.Selectable;
+    "matches": matches.Selectable;
+    "rounds": rounds.Selectable;
   }[T];
 
   export type JSONSelectableForTable<T extends Table> = {
-    "creatures": creatures.JSONSelectable;
-    "user_creatures": user_creatures.JSONSelectable;
+    "matches": matches.JSONSelectable;
+    "rounds": rounds.JSONSelectable;
   }[T];
 
   export type WhereableForTable<T extends Table> = {
-    "creatures": creatures.Whereable;
-    "user_creatures": user_creatures.Whereable;
+    "matches": matches.Whereable;
+    "rounds": rounds.Whereable;
   }[T];
 
   export type InsertableForTable<T extends Table> = {
-    "creatures": creatures.Insertable;
-    "user_creatures": user_creatures.Insertable;
+    "matches": matches.Insertable;
+    "rounds": rounds.Insertable;
   }[T];
 
   export type UpdatableForTable<T extends Table> = {
-    "creatures": creatures.Updatable;
-    "user_creatures": user_creatures.Updatable;
+    "matches": matches.Updatable;
+    "rounds": rounds.Updatable;
   }[T];
 
   export type UniqueIndexForTable<T extends Table> = {
-    "creatures": creatures.UniqueIndex;
-    "user_creatures": user_creatures.UniqueIndex;
+    "matches": matches.UniqueIndex;
+    "rounds": rounds.UniqueIndex;
   }[T];
 
   export type ColumnForTable<T extends Table> = {
-    "creatures": creatures.Column;
-    "user_creatures": user_creatures.Column;
+    "matches": matches.Column;
+    "rounds": rounds.Column;
   }[T];
 
   export type SQLForTable<T extends Table> = {
-    "creatures": creatures.SQL;
-    "user_creatures": user_creatures.SQL;
+    "matches": matches.SQL;
+    "rounds": rounds.SQL;
   }[T];
 
 }
