@@ -8,7 +8,7 @@ async function cratureRouter(fastify: FastifyInstance) {
     fastify.route({
         method: 'GET',
         url: '/',
-        handler: controllers.listUsers,
+        handler: controllers.listCreatures,
     })
 
     fastify.route({
@@ -20,7 +20,7 @@ async function cratureRouter(fastify: FastifyInstance) {
     fastify.route({
         method: 'GET',
         url: '/:id',
-        handler: controllers.getUser,
+        handler: controllers.getCreature,
     })
 
     fastify.route({

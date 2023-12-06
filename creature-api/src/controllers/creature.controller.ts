@@ -6,18 +6,17 @@ import pool from '../db/pgPool'
 
 
 
-export const listUsers =
+export const listCreatures =
     async (request: FastifyRequest, reply: FastifyReply) => {
-        return db.sql<s.users.SQL, s.users.Selectable[]>`SELECT * FROM ${"users"}`
+        return db.sql<s.creatures.SQL, s.creatures.Selectable[]>`SELECT * FROM ${"creatures"}`
             .run(pool)
-            .then((users) => ({ data: users }))
-        // Or .then((users) => reply.send({ data: users }))
+            .then((creatures) => ({ data: creatures }))
     }
 
-export const getUser =
+export const getCreature =
     async (request: FastifyRequest, reply: FastifyReply) => {
-    const id = String(request.params['id'])
-    return await db.sql<s.users.SQL, s.users.Selectable[]>`SELECT * FROM ${"users"} WHERE ${"username"} = ${db.param(id)}`
+    const id = Number(request.params['id'])
+    return await db.sql<s.creatures.SQL, s.creatures.Selectable[]>`SELECT * FROM ${"creatures"} WHERE ${"id"} = ${db.param(id)}`
         .run(pool)
         .then((user) => {
             if (user[0]) {
