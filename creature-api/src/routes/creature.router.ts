@@ -31,7 +31,7 @@ async function creatureRouter(fastify: FastifyInstance) {
     })
 
     fastify.route({
-        method: 'POST',
+        method: 'GET',
         url: '/userCreature/team/:userid',
 
         handler: controllers.getTeam,
