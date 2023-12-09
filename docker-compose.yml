@@ -64,6 +64,18 @@ services:
       - userapi
       - creatureapi
 
+  proxy:
+    image: nginx
+    volumes:
+      - ./proxy:/etc/nginx:ro
+    ports:
+      - "80:80"
+    depends_on:
+      - userapi
+      - creatureapi
+      - matchapi
+
+
 volumes:
   database_data:
     driver: local
