@@ -3,16 +3,17 @@ import { ICreature } from "../interfaces"
 import type * as s from 'zapatos/schema'
 import * as db from 'zapatos/db'
 import pool from '../db/pgPool'
+import {matches} from "zapatos/schema";
 
 
-//
-// export const listCreatures =
-//     async (request: FastifyRequest, reply: FastifyReply) => {
-//         return db.sql<s.creatures.SQL, s.creatures.Selectable[]>`SELECT * FROM ${"creatures"}`
-//             .run(pool)
-//             .then((creatures) => ({ data: creatures }))
-//     }
-//
+
+export const listMatches =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        return db.sql<s.matches.SQL, s.matches.Selectable[]>`SELECT * FROM ${"matches"}`
+            .run(pool)
+            .then((creatures) => ({ data: creatures }))
+    }
+
 // export const getCreature =
 //     async (request: FastifyRequest, reply: FastifyReply) => {
 //     const id = Number(request.params['id'])

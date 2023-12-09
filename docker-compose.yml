@@ -46,6 +46,24 @@ services:
       - postgresql
       - userapi
 
+  matchapi:
+    build:
+      context: .
+      dockerfile: ./match-api/Dockerfile
+    ports:
+      - 5002:5000
+    links:
+      - postgresql
+    environment:
+      - PGHOST=postgresql
+      - PGDATABASE=postgres
+      - PGUSER=postgres
+      - PGPASSWORD=postgres
+    depends_on:
+      - postgresql
+      - userapi
+      - creatureapi
+
 volumes:
   database_data:
     driver: local
