@@ -38,4 +38,4 @@ async function creatureRouter(fastify: FastifyInstance) {
     })
 }
 
-export default creatureRoute
+export default creatureRouter
