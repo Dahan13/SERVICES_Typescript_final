@@ -10,7 +10,9 @@ export const initDB = async () => {
         winner VARCHAR(256) REFERENCES users(username),
         creation_date timestamp DEFAULT now(),
         beginning_date timestamp,
-        ending_date timestamp
+        ending_date timestamp,
+        FOREIGN KEY (host) REFERENCES users,
+        FOREIGN KEY (challenger) REFERENCES users
         );
 
     CREATE TABLE IF NOT EXISTS rounds (
@@ -19,6 +21,7 @@ export const initDB = async () => {
         host_creature INTEGER REFERENCES user_creatures(id),
         challenger_creature INTEGER REFERENCES user_creatures(id),
         status INTEGER DEFAULT 0,
-        winner VARCHAR(256) REFERENCES users(username)
+        winner VARCHAR(256) REFERENCES users(username),
+        FOREIGN KEY (match_id) REFERENCES matches
         );`.run(pool)
 }
