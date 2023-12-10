@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify"
-import { ICreature } from "../interfaces"
+import { IMatch, IRound } from "../interfaces"
 import type * as s from 'zapatos/schema'
 import * as db from 'zapatos/db'
 import pool from '../db/pgPool'
@@ -12,6 +12,61 @@ export const listMatches =
         return db.sql<s.matches.SQL, s.matches.Selectable[]>`SELECT * FROM ${"matches"}`
             .run(pool)
             .then((creatures) => ({ data: creatures }))
+    }
+
+export const createMatch =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        const match = request.body as IMatch;
+        return db.sql<s.matches.SQL, s.matches.Selectable[]>`INSERT INTO ${"matches"} (host) VALUES (${db.param(match.host)})`
+            .run(pool)
+            .then(() => {
+                return reply.send({data: "201 - Successfull !"});
+            })
+    }
+
+export const getMatchById =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        const id = Number(request.params['id']);
+        return await db.sql<s.matches.SQL, s.matches.Selectable[]>`SELECT * FROM ${"matches"} WHERE ${"id"} = ${db.param(id)}`
+            .run(pool)
+            .then((match) => {
+                if (match[0]) {
+                    return reply.send({data: match})
+                } else {
+                    return reply.send({data: "Match not found !"})
+                }
+            })
+    }
+
+export const listRounds =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        return db.sql<s.rounds.SQL, s.rounds.Selectable[]>`SELECT * FROM ${"rounds"}`
+            .run(pool)
+            .then((rounds) => ({ data: rounds }))
+    }
+
+export const createRound =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        const round = request.body as IRound;
+        return db.sql<s.rounds.SQL, s.rounds.Selectable[]>`INSERT INTO ${"rounds"} (match_id) VALUES (${db.param(round.match_id)})`
+            .run(pool)
+            .then(() => {
+                return reply.send({data: "201 - Successfull !"});
+            })
+    }
+
+export const getRoundById =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        const id = Number(request.params['id']);
+        return await db.sql<s.rounds.SQL, s.rounds.Selectable[]>`SELECT * FROM ${"rounds"} WHERE ${"id"} = ${db.param(id)}`
+            .run(pool)
+            .then((round) => {
+                if (round[0]) {
+                    return reply.send({data: round})
+                } else {
+                    return reply.send({data: "Round not found !"})
+                }
+            })
     }
 
 // export const getCreature =

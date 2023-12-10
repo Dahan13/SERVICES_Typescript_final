@@ -1,16 +1,19 @@
-export interface ICreature {
+export interface IMatch {
     id: number;
-    name: string;
-    price: number;
-    health: number;
-    attack: number;
-    defence: number;
-    speed: number;
-    magic: number;
+    host: string;
+    challenger: number;
+    status: number;
+    winner: string;
+    creation_date: Date;
+    beginning_date: Date;
+    ending_date: Date;
 }
 
-export interface IUserCreature {
+export interface IRound {
     id: number;
-    username: string;
-    creature_id: number;
+    match_id: number;
+    host_creature: number;
+    challenger_creature: number;
+    status: number;
+    winner: string;
 }

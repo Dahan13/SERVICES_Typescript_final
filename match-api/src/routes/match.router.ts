@@ -11,6 +11,36 @@ async function matchRouter(fastify: FastifyInstance) {
         handler: controllers.listMatches,
     })
 
+    fastify.route({
+        method: 'POST',
+        url: '/',
+        handler: controllers.createMatch,
+    })
+
+    fastify.route({
+        method: 'GET',
+        url: '/:id',
+        handler: controllers.getMatchById,
+    })
+
+    fastify.route({
+        method: 'GET',
+        url: '/rounds/',
+        handler: controllers.listRounds,
+    })
+
+    fastify.route({
+        method: 'POST',
+        url: '/rounds/',
+        handler: controllers.createRound,
+    })
+
+    fastify.route({
+        method: 'GET',
+        url: '/rounds/:id',
+        handler: controllers.getRoundById,
+    })
+
     // fastify.route({
     //     method: 'POST',
     //     url: '/:id',
