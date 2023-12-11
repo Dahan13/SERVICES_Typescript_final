@@ -26,8 +26,8 @@ async function matchRouter(fastify: FastifyInstance) {
     //non testé
     fastify.route({
         method: 'PUT',
-        url: '/:matchId/join/:userId',
-        handler: controllers.joinMatchByUserId,
+        url: '/:matchId/join/:username',
+        handler: controllers.joinMatchByUsername,
     })
     
 

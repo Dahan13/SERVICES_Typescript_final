@@ -38,16 +38,16 @@ export const getMatchById =
             })
     }
 
-    //non testé
-export const joinMatchByUserId =
+
+export const joinMatchByUsername =
     async (request: FastifyRequest, reply: FastifyReply) => {
         const match_id = Number(request.params['matchId']);
-        const user_id = Number(request.params['userId']);
-        return await db.sql<s.matches.SQL, s.matches.Selectable[]>`INSERT INTO ${"matches"} (challenger) VALUES (${db.param(user_id)}) WHERE ${"id"} = ${db.param(match_id)}`
+        const username = String(request.params['username']);
+        return await db.sql<s.matches.SQL, s.matches.Updatable[]>`UPDATE ${"matches"} SET ${"challenger"} = ${db.param(username)} WHERE ${"id"} = ${db.param(match_id)}`
             .run(pool)
-            .then((match) => {
-                if (match[0]) {
-                    return reply.send({data: match})
+            .then((rowCount) => {
+                if (Number(rowCount) != 0) {
+                    return reply.send({data: `${db.param(username)} joined the match `})
                 } else {
                     return reply.send({data: "Match not found !"})
                 }
