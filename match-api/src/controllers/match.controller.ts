@@ -38,6 +38,22 @@ export const getMatchById =
             })
     }
 
+    //non testé
+export const joinMatchByUserId =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        const match_id = Number(request.params['matchId']);
+        const user_id = Number(request.params['userId']);
+        return await db.sql<s.matches.SQL, s.matches.Selectable[]>`INSERT INTO ${"matches"} (challenger) VALUES (${db.param(user_id)}) WHERE ${"id"} = ${db.param(match_id)}`
+            .run(pool)
+            .then((match) => {
+                if (match[0]) {
+                    return reply.send({data: match})
+                } else {
+                    return reply.send({data: "Match not found !"})
+                }
+            })
+        }
+
 export const listRounds =
     async (request: FastifyRequest, reply: FastifyReply) => {
         return db.sql<s.rounds.SQL, s.rounds.Selectable[]>`SELECT * FROM ${"rounds"}`
@@ -69,6 +85,52 @@ export const getRoundById =
             })
     }
 
+    //a changer, non testé
+export const resolveRound =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        const id = Number(request.params['id']);
+        return await db.sql<s.rounds.SQL, s.rounds.Selectable[]>`UPDATE ${"rounds"} SET ${"status"} = 1 WHERE ${"id"} = ${db.param(id)}`
+            .run(pool)
+            .then((round) => {
+                if (round[0]) {
+                    return reply.send({data: round})
+                } else {
+                    return reply.send({data: "Round not found !"})
+                }
+            })
+    }
+
+    ///rounds/:roundId/challenger/:creatureId
+export const insertRoundChallenger =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        const round_id = Number(request.params['roundId']);
+        const creature_id = Number(request.params['creatureId']);
+        return await db.sql<s.rounds.SQL, s.rounds.Selectable[]>`UPDATE ${"rounds"} SET ${"challenger_creature"} = ${db.param(creature_id)} WHERE ${"id"} = ${db.param(round_id)}`
+            .run(pool)
+            .then((round) => {
+                if (round[0]) {
+                    return reply.send({data: round})
+                } else {
+                    return reply.send({data: "Round not found !"})
+                }
+            })
+    }
+
+    ///rounds/:id/host/:creatureId
+export const insertRoundHost =
+    async (request: FastifyRequest, reply: FastifyReply) => {
+        const round_id = Number(request.params['roundId']);
+        const creature_id = Number(request.params['creatureId']);
+        return await db.sql<s.rounds.SQL, s.rounds.Selectable[]>`UPDATE ${"rounds"} SET ${"host_creature"} = ${db.param(creature_id)} WHERE ${"id"} = ${db.param(round_id)}`
+            .run(pool)
+            .then((round) => {
+                if (round[0]) {
+                    return reply.send({data: round})
+                } else {
+                    return reply.send({data: "Round not found !"})
+                }
+            })
+    }
 // export const getCreature =
 //     async (request: FastifyRequest, reply: FastifyReply) => {
 //     const id = Number(request.params['id'])
