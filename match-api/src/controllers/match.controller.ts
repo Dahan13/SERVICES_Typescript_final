@@ -47,8 +47,80 @@ export const joinMatchByUsername =
         return await db.sql<s.matches.SQL, s.matches.Updatable[]>`UPDATE ${"matches"} SET ${"challenger"} = ${db.param(username)} WHERE ${"id"} = ${db.param(match_id)}`
             .run(pool)
             .then(() => {
-                return reply.send({data: `${db.param(username)} joined the match `})
+                return reply.send({data: `${username} joined the match `})
             })
+        }
+
+export const advanceMatch =
+        async (request: FastifyRequest, reply: FastifyReply) => {
+            // Three cases : status = 0, we have to create a new round. Status = 1, if the current round is over, we check how many rounds were made. If it's 5, we end the match.
+            // Else, we create a new round. Status = 2, do nothing match over.
+            const id = request.params["matchId"];
+            let matchInfos = await db.sql<s.matches.SQL, s.matches.Selectable[]>`SELECT * FROM ${"matches"} WHERE ${"id"} = ${db.param(id)}`.run(pool);
+            let matchInfo = matchInfos[0];
+            if (!matchInfo) {
+                return reply.send({data: "Match not found"})
+            }
+
+            if (matchInfo.status == 2) {
+                return reply.send({data: "The match is already over !"})
+            } else if (matchInfo.status == 1) {
+                // We begin by retrieving all infos of the match rounds
+                let rounds = await db.sql<s.rounds.SQL, s.rounds.Selectable[]>`SELECT * FROM ${"rounds"} WHERE ${"match_id"} = ${db.param(id)}`.run(pool)
+
+                // Now we check if one of the ongoing round is not finished, if its the case we won't advance the match
+                let all_rounds_finished = true;
+                let unfinished_id: Number;
+                for (let i = 0; i < rounds.length; i++) {
+                    if (rounds[i].status != 2) {
+                        all_rounds_finished = false
+                        unfinished_id = rounds[i].id
+                        break;
+                    }
+                }
+                if (all_rounds_finished == false) {
+                    return reply.send({data: `Round ${unfinished_id} is not over yet`})
+                }
+
+                // Now we check if all 5 rounds were done or not
+                if (rounds.length >= 5) { // We have to check if all rounds are finished to wrap it up
+                    // We can now designate a winner
+                    let challenger_score = 0
+                    let host_score = 0
+                    for (let i = 0; i < rounds.length; i++) {
+                        if (rounds[i].winner == matchInfo.host) {
+                            host_score += 1;
+                        } else {
+                            challenger_score += 1
+                        }
+                    }
+                    let winner: string;
+                    if (host_score > challenger_score) {
+                        winner = matchInfo.host
+                    } else {
+                        winner = matchInfo.challenger
+                    }
+
+                    // We can update the database and return the match infos
+                    let update = await db.sql<s.matches.SQL, s.matches.Updatable[]>`UPDATE ${"matches"} SET ${"winner"} = ${db.param(winner)}, ${"status"} = 2, ${"ending_date"} = NOW() WHERE ${"id"} = ${db.param(id)}`.run(pool)
+                    return reply.send({data: `${winner} has won the match`});
+                } else { // All rounds are finished but not 5 were made
+                    // We simply create a new round
+                    let insert = await db.sql<s.rounds.SQL, s.rounds.Insertable>`INSERT INTO ${"rounds"} (match_id) VALUES (${db.param(matchInfo.id)})`.run(pool)
+                    return reply.send({data: "A new round has been created"});
+                }
+            } else { // we start the match
+                if (!matchInfo.challenger) {
+                    return reply.send({data: "Challenger has not been set yet !"})
+                }
+                // We create the new round
+                let insert = await db.sql<s.rounds.SQL, s.rounds.Insertable>`INSERT INTO ${"rounds"} (match_id) VALUES (${db.param(matchInfo.id)})`.run(pool)
+
+                // We update the beginning date of the match
+                let updates = await db.sql<s.matches.SQL, s.matches.Updatable[]>`UPDATE ${"matches"} SET ${"beginning_date"} = NOW(), ${"status"} = 1 WHERE ${"id"} = ${db.param(id)}`.run(pool)
+                let update = updates[0]
+                return reply.send({data: "Match successfully initiated"});
+            }
         }
 
 export const listRounds =

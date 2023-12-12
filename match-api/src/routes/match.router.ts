@@ -23,11 +23,16 @@ async function matchRouter(fastify: FastifyInstance) {
         handler: controllers.getMatchById,
     })
     
-    //non testé
     fastify.route({
         method: 'PUT',
         url: '/:matchId/join/:username',
         handler: controllers.joinMatchByUsername,
+    })
+
+    fastify.route({
+        method: 'PUT',
+        url: '/:matchId/advance',
+        handler: controllers.advanceMatch,
     })
     
 
@@ -50,21 +55,18 @@ async function matchRouter(fastify: FastifyInstance) {
         handler: controllers.getRoundById,
     })
 
-    //nonteste
     fastify.route({
         method: 'PUT',
         url: '/rounds/:id/resolve',
         handler: controllers.resolveRound,
     })
 
-    //nonteste
     fastify.route({
         method: 'PUT',
         url: '/rounds/:roundId/challenger/:creatureId',
         handler: controllers.insertRoundChallenger,
     })
     
-    //nonteste
     fastify.route({
         method: 'PUT',
         url: '/rounds/:id/host/:creatureId',
