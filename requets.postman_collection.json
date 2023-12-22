@@ -1,0 +1,1091 @@
+{
+	"info": {
+		"_postman_id": "b0675043-78d7-4b59-b06b-697f441442a9",
+		"name": "Projet TS Corentin Théo Thomas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29647213",
+		"_collection_link": "https://lunar-firefly-83367.postman.co/workspace/Microservices~80c0284e-31e1-475f-8b95-27c0b56b63ad/collection/20835695-b0675043-78d7-4b59-b06b-697f441442a9?action=share&source=collection_link&creator=29647213"
+	},
+	"item": [
+		{
+			"name": "user-api",
+			"item": [
+				{
+					"name": "listUser",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"toto\",\r\n    \"password\":\"toto123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/user/toto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"toto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"toto\",\r\n    \"score\":100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/user/toto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"user",
+								"toto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "creature-api",
+			"item": [
+				{
+					"name": "get creatures",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost/api/creature/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"creature",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add creature",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"pikachu\",\r\n    \"price\": 42,\r\n    \"health\": 10,\r\n    \"attack\": 1,\r\n    \"defense\": 2,\r\n    \"magic\": 3,\r\n    \"speed\": 4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/creature/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"creature",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get creature by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/creature/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"creature",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add creature to user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"toto\",\r\n    \"creature_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/creature/userCreature",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"creature",
+								"userCreature"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user team",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/creature/userCreature/team/coco",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"creature",
+								"userCreature",
+								"team",
+								"coco"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "match-api",
+			"item": [
+				{
+					"name": "get matches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/match/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"match",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create match",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"host\": \"toto\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost/api/match/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"match",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get match by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/match/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"match",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "joinMatchByUsername",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/match/34/join/coco",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"match",
+								"34",
+								"join",
+								"coco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get rounds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/match/rounds/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"match",
+								"rounds",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create round",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"match_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5002/api/match/rounds/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"match",
+								"rounds",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get round by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/match/rounds/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"match",
+								"rounds",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resolveRound",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/match/rounds/:id/resolve",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"match",
+								"rounds",
+								":id",
+								"resolve"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertRoundHost",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/match/rounds/8/host/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"match",
+								"rounds",
+								"8",
+								"host",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "insertRoundChallenger",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5002/api/match/rounds/8/challenger/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5002",
+							"path": [
+								"api",
+								"match",
+								"rounds",
+								"8",
+								"challenger",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Advance match",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/match/:matchId/advance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"match",
+								":matchId",
+								"advance"
+							],
+							"variable": [
+								{
+									"key": "matchId",
+									"value": "34"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "proxy",
+			"item": [
+				{
+					"name": "get user by proxy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost/api/creature",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"api",
+								"creature"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Démo",
+			"item": [
+				{
+					"name": "Compte",
+					"item": [
+						{
+							"name": "listUser",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/api/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create_user (ash)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"ash\",\r\n    \"password\":\"ash123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create_user (trevor)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"trevor\",\r\n    \"password\":\"trevor123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/user/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"user",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Creatures + equipe",
+					"item": [
+						{
+							"name": "get creatures",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost/api/creature/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"creature",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add creature (pikachu)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"pikachu\",\r\n    \"price\": 42,\r\n    \"health\": 35,\r\n    \"attack\": 55,\r\n    \"defense\": 40,\r\n    \"magic\": 50,\r\n    \"speed\": 90\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/creature/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"creature",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add creature (salameche)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"salameche\",\r\n    \"price\": 35,\r\n    \"health\": 39,\r\n    \"attack\": 52,\r\n    \"defense\": 43,\r\n    \"magic\": 60,\r\n    \"speed\": 65\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/creature/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"creature",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get team (ash)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/api/creature/userCreature/team/ash",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"creature",
+										"userCreature",
+										"team",
+										"ash"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "+ team comp (pika) (ash)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"ash\",\r\n    \"creature_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/creature/userCreature",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"creature",
+										"userCreature"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get team (trevor)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/api/creature/userCreature/team/trevor",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"creature",
+										"userCreature",
+										"team",
+										"trevor"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "+ team comp (salameche) (trevor)",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"trevor\",\r\n    \"creature_id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost/api/creature/userCreature",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"creature",
+										"userCreature"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Match",
+					"item": [
+						{
+							"name": "Creation & Join",
+							"item": [
+								{
+									"name": "get matches",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost/api/match/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"match",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create match (ash)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"host\": \"ash\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/api/match/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"match",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "joinMatch (trevor)",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "http://localhost/api/match/1/join/trevor",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"match",
+												"1",
+												"join",
+												"trevor"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Rounds",
+							"item": [
+								{
+									"name": "get all rounds",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost/api/match/rounds/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"match",
+												"rounds",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "create round (match 1)",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"match_id\": 1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost/api/match/rounds/",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"match",
+												"rounds",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "insert Host (R1 C1)",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:5002/api/match/rounds/:roundId/host/:creatureId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5002",
+											"path": [
+												"api",
+												"match",
+												"rounds",
+												":roundId",
+												"host",
+												":creatureId"
+											],
+											"variable": [
+												{
+													"key": "roundId",
+													"value": "1"
+												},
+												{
+													"key": "creatureId",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "insert Challenger (R1 C2)",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "http://localhost/api/match/rounds/:roundId/challenger/:creatureId",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"match",
+												"rounds",
+												":roundId",
+												"challenger",
+												":creatureId"
+											],
+											"variable": [
+												{
+													"key": "roundId",
+													"value": "1"
+												},
+												{
+													"key": "creatureId",
+													"value": "3"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "resolveRound",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"url": {
+											"raw": "http://localhost/api/match/rounds/:id/resolve",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"path": [
+												"api",
+												"match",
+												"rounds",
+												":id",
+												"resolve"
+											],
+											"variable": [
+												{
+													"key": "id",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Advance match",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "http://localhost/api/match/:matchId/advance",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"path": [
+										"api",
+										"match",
+										":matchId",
+										"advance"
+									],
+									"variable": [
+										{
+											"key": "matchId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
